@@ -58,6 +58,18 @@ javac -encoding UTF-8 -d bin BarberPlan\src\Agendamento.java BarberPlan\src\Barb
 java -cp bin Main
 ```
 
+Outra opção é usar o **Prompt de Comando do Windows (CMD)**. Abra o CMD,
+navegue até a pasta raiz do projeto e execute:
+
+```bat
+mkdir bin
+javac -encoding UTF-8 -d bin BarberPlan\src\Agendamento.java BarberPlan\src\Barbearia.java BarberPlan\src\Main.java BarberPlan\src\Servico.java BarberPlan\src\Usuario.java
+java -cp bin Main
+```
+
+Se o diretório `bin` já existir, o comando `mkdir bin` pode informar que ele
+já existe; isso não impede a compilação.
+
 Ao iniciar, escolha o tipo de login apropriado. Para cadastrar um cliente,
 escolha **Cadastrar cliente**; para criar uma conta de barbeiro, entre como
 administrador e use **Cadastrar barbeiro**.
