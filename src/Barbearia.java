@@ -53,18 +53,18 @@ public class Barbearia {
         return null; // Retorna null se não encontrar um usuário com o login e senha fornecidos
     }
 
-    public boolean cadastrarCliente(String nome, String telefone, String login, String senha) {
+    public boolean cadastrarCliente(String nome, String telefone, String login, String senha) { // Cadastra um novo cliente na barbearia, verificando se o telefone é válido
         if (telefone == null || telefone.trim().isEmpty()) {
             return false;
         }
-        return cadastrarUsuario(nome, telefone.trim(), login, senha, "CLIENTE");
+        return cadastrarUsuario(nome, telefone.trim(), login, senha, "CLIENTE"); // Chama o método privado cadastrarUsuario para realizar o cadastro do cliente
     }
 
     public boolean cadastrarBarbeiro(String nome, String login, String senha) {
         return cadastrarUsuario(nome, "", login, senha, "BARBEIRO");
     }
 
-    private boolean cadastrarUsuario(String nome, String telefone, String login, String senha, String perfil) {
+    private boolean cadastrarUsuario(String nome, String telefone, String login, String senha, String perfil) {  // Cadastra um novo usuário na barbearia, verificando se o login é válido e se há espaço no array de usuários
         if (nome == null || nome.trim().isEmpty()
                 || login == null || login.trim().isEmpty()
                 || senha == null || senha.trim().isEmpty()
@@ -77,7 +77,7 @@ public class Barbearia {
             }
         }
 
-        usuarios[totalUsuarios] = new Usuario(nome.trim(), telefone, login.trim(), senha, perfil);
+        usuarios[totalUsuarios] = new Usuario(nome.trim(), telefone, login.trim(), senha, perfil);  // Cria um novo usuário e adiciona ao array de usuários
         totalUsuarios++;
         salvarDadosJson();
         return true;
@@ -191,7 +191,9 @@ public class Barbearia {
             json.append("\n");
         }
 
-        json.append("  ],\n  \"agendamentos\": [\n");
+        // Adiciona os agendamentos ao JSON, incluindo informações como ID, nome do cliente, telefone, serviço, data e horário.
+        
+        json.append("  ],\n  \"agendamentos\": [\n"); 
         for (int i = 0; i < totalAgendamentos; i++) {
             Agendamento agendamento = agendamentos[i];
             json.append("    {\"id\": ").append(agendamento.getId())
