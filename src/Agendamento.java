@@ -7,17 +7,17 @@ import java.time.LocalTime;
 
 public class Agendamento {
     // Atributos do agendamento
-    private int id;
-    private String nome;
-    private String telefone;
-    private String servico;
-    private LocalDate data;
-    private LocalTime horario;
+    private final int id;
+    private final String nome;
+    private final String telefone;
+    private final String servico;
+    private final LocalDate data;
+    private final LocalTime horario;
     
-    public Agendamento(
+    public Agendamento(int id, String nome, String telefone, String servico,
+        LocalDate data, LocalTime horario)
         // Construtor para inicializar um agendamento com os dados fornecidos
-        int id, String nome, String telefone, String servico,
-        LocalDate data, LocalTime horario) {
+       {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
