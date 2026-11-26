@@ -17,6 +17,10 @@ public class Main {
             System.out.println("0. Sair");
             int opcao = lerOpcao(scanner, "Escolha: ");
 
+            
+     /*O switch case é usado para tratar as diferentes opções do menu principal.
+      *Cada caso corresponde a uma ação específica, como login ou cadastro.
+     */
       switch (opcao) {
                 case 1:
                     Usuario cliente = entrar(scanner, barbearia, "CLIENTE");
