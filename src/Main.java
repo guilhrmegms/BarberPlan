@@ -3,7 +3,7 @@ import java.util.Scanner; // Importa a classe Scanner para ler entradas do usuá
 public class Main {
     // Método principal: é o ponto de entrada executado pela JVM.
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in);
         Barbearia barbearia = new Barbearia();
         boolean executando = true;
 
@@ -15,33 +15,32 @@ public class Main {
             System.out.println("3. Login do barbeiro");
             System.out.println("4. Cadastrar cliente");
             System.out.println("0. Sair");
-            int opcao = lerOpcao(scanner, "Escolha: ");
-            
-     /*O switch case é usado para tratar as diferentes opções do menu principal.
-      *Cada caso corresponde a uma ação específica, como login ou cadastro.
-      */
-            
-      switch (opcao) {
+            int opcao = lerOpcao(entrada, "Escolha: ");
+
+            /* O switch case é usado para tratar as diferentes opções do menu principal.
+             * Cada caso corresponde a uma ação específica, como login ou cadastro.
+             */
+            switch (opcao) {
                 case 1:
-                    Usuario cliente = entrar(scanner, barbearia, "CLIENTE");
+                    Usuario cliente = entrar(entrada, barbearia, "CLIENTE");
                     if (cliente != null) {
-                        executarMenu(scanner, barbearia, cliente);
+                        executarMenu(entrada, barbearia, cliente);
                     }
                     break;
                 case 2:
-                    Usuario admin = entrar(scanner, barbearia, "ADMINISTRADOR");
+                    Usuario admin = entrar(entrada, barbearia, "ADMINISTRADOR");
                     if (admin != null) {
-                        executarMenu(scanner, barbearia, admin);
+                        executarMenu(entrada, barbearia, admin);
                     }
                     break;
                 case 3:
-                    Usuario barbeiro = entrar(scanner, barbearia, "BARBEIRO");
+                    Usuario barbeiro = entrar(entrada, barbearia, "BARBEIRO");
                     if (barbeiro != null) {
-                        executarMenu(scanner, barbearia, barbeiro);
+                        executarMenu(entrada, barbearia, barbeiro);
                     }
                     break;
                 case 4:
-                    cadastrarCliente(scanner, barbearia);
+                    cadastrarCliente(entrada, barbearia);
                     break;
                 case 0:
                     executando = false;
@@ -52,7 +51,7 @@ public class Main {
             }
         }
 
-        scanner.close();
+        entrada.close();
 
         /* Salva os dados da barbearia em um arquivo JSON ao encerrar o programa.
         if (barbearia.salvarDadosJson()) {
@@ -135,9 +134,9 @@ public class Main {
             System.out.println("0. Sair da conta");
             int opcao = lerOpcao(scanner, "Escolha: ");
 
-            if ("CLIENTE".equals(perfil)) {                     // O cliente pode agendar, listar seus agendamentos ou ver os serviços disponíveis
-                if (opcao == 1) {
-                    agendar(scanner, barbearia, usuario, false);
+            if ("CLIENTE".equals(perfil)) {   // O cliente pode agendar, listar seus agendamentos ou ver os serviços disponíveis
+                if (opcao == 1) { 
+                    agendar(scanner, barbearia, usuario, false); //
                 } else if (opcao == 2) {
                     barbearia.listarPorTelefone(usuario.getTelefone());
                 } else if (opcao == 3) {
