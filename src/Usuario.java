@@ -1,9 +1,9 @@
 public class Usuario { // Classe que representa um usuário do sistema, seja cliente, administrador ou barbeiro.
-    private String nome;
-    private String telefone;
-    private String login;
-    private String senha;
-    private String perfil;
+    private final String nome;
+    private final String telefone;
+    private final String login;
+    private final String senha;
+    private final String perfil;
 
     public Usuario(String nome, String telefone, String login, String senha, String perfil) { // Construtor para inicializar um usuário com os dados fornecidos
         this.nome = nome;
