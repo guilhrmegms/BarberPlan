@@ -1,6 +1,6 @@
 public class Servico { // Classe que representa um serviço oferecido pela barbearia.
-    private String nome;
-    private double preco;
+    private final String nome;
+    private final double preco;
 
     public Servico(String nome, double preco) { // Construtor para inicializar um serviço com nome e preço
         this.nome = nome;
