@@ -17,28 +17,34 @@ public class Main {
             System.out.println("0. Sair");
             int opcao = lerOpcao(scanner, "Escolha: ");
 
-            if (opcao == 1) {
-                Usuario usuario = entrar(scanner, barbearia, "CLIENTE");
-                if (usuario != null) {
-                    executarMenu(scanner, barbearia, usuario);
-                }
-            } else if (opcao == 2) {
-                Usuario usuario = entrar(scanner, barbearia, "ADMINISTRADOR");
-                if (usuario != null) {
-                    executarMenu(scanner, barbearia, usuario);
-                }
-            } else if (opcao == 3) {
-                Usuario usuario = entrar(scanner, barbearia, "BARBEIRO");
-                if (usuario != null) {
-                    executarMenu(scanner, barbearia, usuario);
-                }
-            } else if (opcao == 4) {
-                cadastrarCliente(scanner, barbearia);
-            } else if (opcao == 0) {
-                executando = false;
-                System.out.println("Fechando sistema...");
-            } else {
-                System.out.println("Opção inválida.");
+      switch (opcao) {
+                case 1:
+                    Usuario cliente = entrar(scanner, barbearia, "CLIENTE");
+                    if (cliente != null) {
+                        executarMenu(scanner, barbearia, cliente);
+                    }
+                    break;
+                case 2:
+                    Usuario admin = entrar(scanner, barbearia, "ADMINISTRADOR");
+                    if (admin != null) {
+                        executarMenu(scanner, barbearia, admin);
+                    }
+                    break;
+                case 3:
+                    Usuario barbeiro = entrar(scanner, barbearia, "BARBEIRO");
+                    if (barbeiro != null) {
+                        executarMenu(scanner, barbearia, barbeiro);
+                    }
+                    break;
+                case 4:
+                    cadastrarCliente(scanner, barbearia);
+                    break;
+                case 0:
+                    executando = false;
+                    System.out.println("Saindo do sistema...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
             }
         }
 
