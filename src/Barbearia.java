@@ -10,12 +10,12 @@ import java.time.format.DateTimeFormatter; // Importa a classe DateTimeFormatter
  * Classe que representa a barbearia, contendo métodos para gerenciar agendamentos, serviços e usuários.
  */
 public class Barbearia {
-    private Agendamento[] agendamentos;
+    private final Agendamento[] agendamentos;
     private int totalAgendamentos;
     private int id;
 
-    private Servico[] servicos;
-    private Usuario[] usuarios;
+    private final Servico[] servicos;
+    private final Usuario[] usuarios;
     private int totalUsuarios;
 
     public Barbearia() {
@@ -64,7 +64,7 @@ public class Barbearia {
         return cadastrarUsuario(nome, "", login, senha, "BARBEIRO");
     }
 
-    private boolean cadastrarUsuario(String nome, String telefone, String login, String senha, String perfil) {  // Cadastra um novo usuário na barbearia, verificando se o login é válido e se há espaço no array de usuários
+    private boolean cadastrarUsuario(String nome, String telefone, String login, String senha, String perfil) { // Cadastra um novo usuário na barbearia, verificando se o login é válido e se há espaço no array de usuários
         if (nome == null || nome.trim().isEmpty()
                 || login == null || login.trim().isEmpty()
                 || senha == null || senha.trim().isEmpty()
@@ -77,7 +77,7 @@ public class Barbearia {
             }
         }
 
-        usuarios[totalUsuarios] = new Usuario(nome.trim(), telefone, login.trim(), senha, perfil);  // Cria um novo usuário e adiciona ao array de usuários
+        usuarios[totalUsuarios] = new Usuario(nome.trim(), telefone, login.trim(), senha, perfil); //
         totalUsuarios++;
         salvarDadosJson();
         return true;
@@ -192,8 +192,8 @@ public class Barbearia {
         }
 
         // Adiciona os agendamentos ao JSON, incluindo informações como ID, nome do cliente, telefone, serviço, data e horário.
-        
-        json.append("  ],\n  \"agendamentos\": [\n"); 
+
+        json.append("  ],\n  \"agendamentos\": [\n");
         for (int i = 0; i < totalAgendamentos; i++) {
             Agendamento agendamento = agendamentos[i];
             json.append("    {\"id\": ").append(agendamento.getId())
