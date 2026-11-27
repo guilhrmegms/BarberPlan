@@ -48,27 +48,47 @@ qualquer uso real.
 
 ## Como compilar e executar
 
-Execute os comandos abaixo na pasta raiz do repositório, onde este README está.
-É necessário ter o JDK instalado e os comandos `javac` e `java` disponíveis no
-terminal.
+É necessário ter o **JDK (Java Development Kit)** instalado. Para confirmar
+que o terminal encontra o compilador e o Java, execute `javac -version` e
+`java -version`. Se os comandos não forem reconhecidos, instale um JDK e
+configure o `PATH`.
+
+Abra um terminal e navegue até a pasta raiz do projeto — a pasta que contém
+este `README.md` e a pasta `src`.
+
+### Windows (PowerShell)
+
+No PowerShell, a partir da pasta raiz do projeto, compile e execute:
 
 ```powershell
 New-Item -ItemType Directory -Force bin
-javac -encoding UTF-8 -d bin BarberPlan\src\Agendamento.java BarberPlan\src\Barbearia.java BarberPlan\src\Main.java BarberPlan\src\Servico.java BarberPlan\src\Usuario.java
+javac -encoding UTF-8 -d bin src\Agendamento.java src\Barbearia.java src\Main.java src\Servico.java src\Usuario.java
 java -cp bin Main
 ```
 
-Outra opção é usar o **Prompt de Comando do Windows (CMD)**. Abra o CMD,
-navegue até a pasta raiz do projeto e execute:
+### Windows (Prompt de Comando — CMD)
+
+No CMD, navegue até a pasta raiz do projeto e execute:
 
 ```bat
-mkdir bin
-javac -encoding UTF-8 -d bin BarberPlan\src\Agendamento.java BarberPlan\src\Barbearia.java BarberPlan\src\Main.java BarberPlan\src\Servico.java BarberPlan\src\Usuario.java
+if not exist bin mkdir bin
+javac -encoding UTF-8 -d bin src\Agendamento.java src\Barbearia.java src\Main.java src\Servico.java src\Usuario.java
 java -cp bin Main
 ```
 
-Se o diretório `bin` já existir, o comando `mkdir bin` pode informar que ele
-já existe; isso não impede a compilação.
+### Linux (Terminal)
+
+No terminal, navegue até a pasta raiz do projeto e execute:
+
+```sh
+mkdir -p bin
+javac -encoding UTF-8 -d bin src/Agendamento.java src/Barbearia.java src/Main.java src/Servico.java src/Usuario.java
+java -cp bin Main
+```
+
+Os comandos compilam os arquivos Java para a pasta `bin` e iniciam o programa.
+Se já existir, `bin` pode ser reutilizada. Para iniciar o programa novamente
+após compilar, basta executar `java -cp bin Main` a partir da raiz do projeto.
 
 Ao iniciar, escolha o tipo de login apropriado. Para cadastrar um cliente,
 escolha **Cadastrar cliente**; para criar uma conta de barbeiro, entre como
@@ -94,15 +114,15 @@ atual; os comandos acima iniciam o programa a partir da raiz do repositório.
 ## Estrutura do projeto
 
 ```text
-BarberPlan/
-  src/
-    Agendamento.java  # Dados de um agendamento
-    Barbearia.java    # Serviços, usuários, agenda e exportação JSON
-    Main.java         # Menus, login e interação pelo terminal
-    Servico.java      # Dados de um serviço e seu preço
-    Usuario.java      # Dados e autenticação dos usuários
-dados.json            # Exportação visual dos dados
-README.md
+.
+├── src/
+│   ├── Agendamento.java  # Dados de um agendamento
+│   ├── Barbearia.java    # Serviços, usuários, agenda e exportação JSON
+│   ├── Main.java         # Menus, login e interação pelo terminal
+│   ├── Servico.java      # Dados de um serviço e seu preço
+│   └── Usuario.java      # Dados e autenticação dos usuários
+├── dados.json            # Exportação visual dos dados
+└── README.md
 ```
 
 ## Limitações
