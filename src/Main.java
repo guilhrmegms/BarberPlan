@@ -219,13 +219,13 @@ public class Main {
         }
     }
 
-    private static int lerOpcao(Scanner scanner, String mensagem) {
+        private static int lerOpcao(Scanner scanner, String mensagem) {
         System.out.print(mensagem);
         String entrada = scanner.nextLine();
-        try {
-            return Integer.parseInt(entrada);
+        try { 
+            return Integer.parseInt(entrada); // Tenta converter a entrada para um número inteiro, se falhar, captura a exceção e retorna -1.
         } catch (NumberFormatException e) {
-            return -1;
+            return -1; // Retorna -1 para indicar que a entrada não é um número válido, permitindo que o programa trate a opção como inválida no menu.
         }
     }
 }
