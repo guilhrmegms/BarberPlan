@@ -134,6 +134,11 @@ public class Main {
             System.out.println("0. Sair da conta");
             int opcao = lerOpcao(scanner, "Escolha: ");
 
+           /* 
+            *O bloco de código abaixo trata as opções selecionadas pelo usuário, dependendo do seu perfil.
+            * Cada perfil tem permissões diferentes, e o programa executa ações específicas com base na escolha do usuário.
+            */
+
             if ("CLIENTE".equals(perfil)) {   // O cliente pode agendar, listar seus agendamentos ou ver os serviços disponíveis
                 if (opcao == 1) { 
                     agendar(scanner, barbearia, usuario, false); //
@@ -211,21 +216,26 @@ public class Main {
         }
     }
 
-    private static void listarServicos(Barbearia barbearia) {
+    private static void listarServicos(Barbearia barbearia) { // Exibe a lista de serviços disponíveis na barbearia, incluindo nome e preço
         System.out.println("\n--- SERVIÇOS ---");
-        Servico[] servicos = barbearia.getServicos();
-        for (Servico servico : servicos) {
-            System.out.println(servico.getNome() + " - R$ " + servico.getPreco());
+        Servico[] servicos = barbearia.getServicos(); // Obtém a lista de serviços disponíveis na barbearia
+        for (Servico servico : servicos) { 
+            System.out.println(servico.getNome() + " - R$ " + servico.getPreco()); // Exibe o nome e o preço de cada serviço disponível na barbearia
         }
     }
 
-        private static int lerOpcao(Scanner scanner, String mensagem) {
+    private static int lerOpcao(Scanner scanner, String mensagem) { // Solicita ao usuário que insira uma opção e tenta convertê-la para um número inteiro
         System.out.print(mensagem);
         String entrada = scanner.nextLine();
+
+        /* Tenta converter a entrada para um número inteiro, se falhar, captura a exceção e retorna -1. 
+         * Isso permite que o programa trate a opção como inválida no menu, sem quebrar a execução.
+        */
+
         try { 
-            return Integer.parseInt(entrada); // Tenta converter a entrada para um número inteiro, se falhar, captura a exceção e retorna -1.
-        } catch (NumberFormatException e) {
-            return -1; // Retorna -1 para indicar que a entrada não é um número válido, permitindo que o programa trate a opção como inválida no menu.
+            return Integer.parseInt(entrada); 
+        } catch (NumberFormatException e) {  // Captura a exceção caso a entrada não seja um número válido
+            return -1; 
         }
     }
 }
